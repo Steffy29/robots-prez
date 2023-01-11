@@ -1,0 +1,23 @@
+{
+  "name": "reveal-embed-video",
+  "homepage": "https://github.com/ThomasWeinert/reveal-embed-video",
+  "authors": [
+    "Dave Thomas",
+    "Thomas Weinert <thomas@weinert.info>"
+  ],
+  "description": "Embed local video in a reveal.js presentation",
+  "keywords": [
+    "reveal",
+    "video",
+    "webcam",
+    "webinar"
+  ],
+  "ignore": [
+    "**/.*",
+    "example/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ThomasWeinert/reveal-embed-video.git"
+  }
+}

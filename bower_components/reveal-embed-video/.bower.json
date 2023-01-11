@@ -1,0 +1,34 @@
+{
+  "name": "reveal-embed-video",
+  "homepage": "https://github.com/ThomasWeinert/reveal-embed-video",
+  "authors": [
+    "Dave Thomas",
+    "Thomas Weinert <thomas@weinert.info>"
+  ],
+  "description": "Embed local video in a reveal.js presentation",
+  "keywords": [
+    "reveal",
+    "video",
+    "webcam",
+    "webinar"
+  ],
+  "ignore": [
+    "**/.*",
+    "example/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ThomasWeinert/reveal-embed-video.git"
+  },
+  "version": "1.1.0",
+  "_release": "1.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.1.0",
+    "commit": "7a9872a3acc8e8ec63ed9924999c230f50e6d128"
+  },
+  "_source": "https://github.com/pragdave/reveal-embed-video.git",
+  "_target": "^1.1.0",
+  "_originalSource": "reveal-embed-video",
+  "_direct": true
+}

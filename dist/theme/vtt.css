@@ -47,6 +47,25 @@
   height: 100px;
 }
 
+.prez {
+  display: flex;
+  margin-top: 9%;
+  margin-left: -10%;
+  width: 120%;
+}
+
+.img-position {
+  object-position: 60% 40%;
+}
+
+.prez-history {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 1px;
+  grid-row-gap: 0px;
+}
+
 section.has-light-background, section.has-light-background h1, section.has-light-background h2, section.has-light-background h3, section.has-light-background h4, section.has-light-background h5, section.has-light-background h6 {
   color: #222;
 }
@@ -55,7 +74,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
  * GLOBAL STYLES
  *********************************************/
 :root {
-  --r-background-color: #191919;
+  --r-background-color: #8083A4;
   --r-main-font: Source Sans Pro, Helvetica, sans-serif;
   --r-main-font-size: 42px;
   --r-main-color: #fff;
@@ -82,7 +101,13 @@ section.has-light-background, section.has-light-background h1, section.has-light
 }
 
 .reveal-viewport {
-  background: #191919;
+  background: #00074C;
+  background: -moz-linear-gradient(top, #00074C 0%, #8083A4 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #00074C), color-stop(100%, #8083A4));
+  background: -webkit-linear-gradient(top, #00074C 0%, #8083A4 100%);
+  background: -o-linear-gradient(top, #00074C 0%, #8083A4 100%);
+  background: -ms-linear-gradient(top, #00074C 0%, #8083A4 100%);
+  background: linear-gradient(top, #00074C 0%, #8083A4 100%);
   background-color: var(--r-background-color);
 }
 

@@ -16,21 +16,25 @@
 
 
 // Override theme settings (see ../template/settings.scss)
-$backgroundColor: #191919;
+$backgroundColor: #8083A4;
 
 $mainColor: #fff;
 $headingColor: #fff;
 
 $mainFontSize: 42px;
-$mainFont: 'Source Sans Pro', Helvetica, sans-serif;
-$headingFont: 'Source Sans Pro', Helvetica, sans-serif;
+$mainFont: 'Source Sans Pro',
+Helvetica,
+sans-serif;
+$headingFont: 'Source Sans Pro',
+Helvetica,
+sans-serif;
 $headingTextShadow: none;
 $headingLetterSpacing: normal;
 $headingTextTransform: uppercase;
 $headingFontWeight: 600;
 $linkColor: #42affa;
-$linkColorHover: lighten( $linkColor, 15% );
-$selectionBackgroundColor: lighten( $linkColor, 25% );
+$linkColorHover: lighten($linkColor, 15%);
+$selectionBackgroundColor: lighten($linkColor, 25%);
 
 $heading1Size: 2.5em;
 $heading2Size: 1.6em;
@@ -78,6 +82,30 @@ $heading4Size: 1.0em;
     margin-right: auto !important;
     width: 150px;
     height: 100px;
+}
+
+.prez {
+    display: flex;
+    margin-top: 9%;
+    margin-left: -10%;
+    width: 120%;
+}
+
+.img-position {
+    object-position: 60% 40%;
+}
+
+.prez-history {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 1px;
+    grid-row-gap: 0px;
+}
+
+// Background generator
+@mixin bodyBackground() {
+    @include vertical-gradient(#00074C, #8083A4);
 }
 
 // Change text colors against light slide backgrounds
