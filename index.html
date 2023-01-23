@@ -98,10 +98,34 @@
           </section>
           <section data-video="my-demo"></section>
           <section>
-            <h2>Code</h2>
-            <pre><code data-trim data-noescape>
-
-            </code></pre>
+            <h2>Code example</h2>
+            <pre>
+              <code data-trim data-noescape>
+    dataString = btSerial.readStringUntil('\n');
+    sscanf(dataString.c_str(), "%d,%d,%d,%d", &data.lxAxisValue, &data.lyAxisValue, &data.rxAxisValue, &data.ryAxisValue);
+     //Left stick  - y axis - forward/backward car movement
+    int throttle = map(data.lyAxisValue, 254, 0, -255, 255);
+     //Right stick - x axis - left/right car movement 
+    int steering = map(data.rxAxisValue, 0, 254, -255, 255);
+    int motorDirection = 1;    
+    if (throttle < 0)       //Move car backward
+    {
+      motorDirection = -1;    
+    }
+              </code>
+            </pre>
+            <pre>
+              <code data-trim data-noescape>
+    int rightMotorSpeed, leftMotorSpeed;
+    rightMotorSpeed =  abs(throttle) - steering;
+    leftMotorSpeed =  abs(throttle) + steering;
+    rightMotorSpeed = constrain(rightMotorSpeed, 0, 255);
+    leftMotorSpeed = constrain(leftMotorSpeed, 0, 255);
+  
+    rotateMotor(rightMotorSpeed * motorDirection, leftMotorSpeed * motorDirection);
+    lastRecvTime = millis();          
+              </code>
+            </pre>
           </section>
         </section>
         <section
@@ -140,11 +164,14 @@
           <section data-video="my-demo"></section>
           <section>
             <h2>Code</h2>
-            <img data-src="./images/dancedancerobot-prog-1.png" style="width: 700px"/>
+            <img
+              data-src="./images/dancedancerobot-prog-1.png"
+              style="width: 700px"
+            />
           </section>
           <section>
             <h2>Code</h2>
-            <img data-src="./images/dancedancerobot-prog-2.png"/>
+            <img data-src="./images/dancedancerobot-prog-2.png" />
           </section>
         </section>
         <section
@@ -191,6 +218,67 @@
             </div>
           </section>
           <section data-video="my-demo"></section>
+          <section>
+            <h2>Tinygo code example</h2>
+            <pre>
+              <code data-trim data-noescape>
+	gp1 := machine.GP1
+	pwm0b := machine.PWM0
+	pwm0b.Configure(machine.PWMConfig{
+		Period: period,
+	})
+	ch1, err1 := pwm0b.Channel(gp1)
+	if err1 != nil {
+		println(err1.Error())
+		return
+	}
+	position := 1
+  </code>
+  </pre>
+  <pre>
+  <code data-trim data-noescape>
+	for {
+		for i := 0; i < 4; i++ {
+			if position == 16 {
+				position = 1
+			}
+			pwm0b.Set(ch1, pwm0b.Top()/uint32(position))
+			time.Sleep(time.Millisecond * 10)
+			position = position + 4
+		}
+	}
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h2>Arduino code example</h2>
+            <pre>
+              <code  data-trim data-noescape>
+void Servo_Start_Position() {
+  Hip_Centered();
+  pwm.setPWM(Head_Servo_Pin, 0, Head_Servo_Start_Position);
+  Legs_Folded();
+  pwm.setPWM(Door_Servo_Pin, 0, Door_Servo_Close);
+  delay(1000);
+}              
+              </code>
+            </pre>
+            <pre>
+              <code  data-trim data-noescape>
+    case Legs_Deployment:
+      Door(Opening);
+      Legs_Partially_Unfolded(); // DEPLOY THE LEGS UP TO TOUCH THE GROUND
+      Legs_Unfolded(); // DEPLOY THE LEGS TO LIFT THE ROBOT
+    case Moving_Forward:
+      Led_Walking();
+      while (Ultrasonic_Sensor() > Distance_To_Activate_Switch) { // CONTINUE TO WALK UNTIL SWITCH ACTIVATION
+        if (Ultrasonic_Sensor() > Distance_Obstacle) walk();
+        else if (Head_Rotation() == Left) Rotation(Left);
+        else Rotation(Right);
+      }
+              </code>
+            </pre>
+          </section>
         </section>
         <section
           data-background-image="./images/verytechtrip_logo.png"
@@ -212,7 +300,7 @@
                 />
                 <a href="https://github.com/Steffy29/matikle"
                   >Matikle Robot and command</a
-                >
+                > based on Elegoo Robot Car Kit
               </li>
               <li>
                 <img
@@ -225,7 +313,16 @@
                 and
                 <a href="https://github.com/Steffy29/dancedancerobot-command"
                   >DanceDanceRobot command</a
-                >
+                > based on Kitten Bot Otto
+              </li>
+              <li>
+                <img
+                  data-src="./images/logo_github.png"
+                  class="image-cropper logos-rs"
+                />
+                <a href="https://github.com/Steffy29/pico_quadruped"
+                  >PicoQuad</a
+                > based on Q1 Mini Quadruped
               </li>
               <li>
                 <img
@@ -234,7 +331,7 @@
                 />
                 <a href="https://github.com/Steffy29/booboolrobot"
                   >Boobool robot</a
-                >
+                > based on Spherical Quadruped Arduino Robot
               </li>
             </ul>
           </ul>
