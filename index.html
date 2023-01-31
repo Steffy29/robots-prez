@@ -101,29 +101,28 @@
             <h2>Code example</h2>
             <pre>
               <code data-trim data-noescape>
-    dataString = btSerial.readStringUntil('\n');
-    sscanf(dataString.c_str(), "%d,%d,%d,%d", &data.lxAxisValue, &data.lyAxisValue, &data.rxAxisValue, &data.ryAxisValue);
-     //Left stick  - y axis - forward/backward car movement
-    int throttle = map(data.lyAxisValue, 254, 0, -255, 255);
-     //Right stick - x axis - left/right car movement 
-    int steering = map(data.rxAxisValue, 0, 254, -255, 255);
-    int motorDirection = 1;    
-    if (throttle < 0)       //Move car backward
-    {
-      motorDirection = -1;    
-    }
+getstr=Serial.read();
+if(getstr == 'f') {
+  _mForward();
+} else if(getstr == 'b') {
+  _mBack();
+} else if(getstr == 'l') {
+...
               </code>
             </pre>
             <pre>
               <code data-trim data-noescape>
-    int rightMotorSpeed, leftMotorSpeed;
-    rightMotorSpeed =  abs(throttle) - steering;
-    leftMotorSpeed =  abs(throttle) + steering;
-    rightMotorSpeed = constrain(rightMotorSpeed, 0, 255);
-    leftMotorSpeed = constrain(leftMotorSpeed, 0, 255);
-  
-    rotateMotor(rightMotorSpeed * motorDirection, leftMotorSpeed * motorDirection);
-    lastRecvTime = millis();          
+void _mLeft()
+{
+  // Turn left
+  digitalWrite(ENA,HIGH);
+  digitalWrite(ENB,HIGH);
+  digitalWrite(in1,LOW);
+  digitalWrite(in2,HIGH);
+  digitalWrite(in3,LOW);
+  digitalWrite(in4,HIGH);
+  Serial.println("go left !");
+}
               </code>
             </pre>
           </section>
