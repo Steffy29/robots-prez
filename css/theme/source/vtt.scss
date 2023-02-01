@@ -41,6 +41,16 @@ $heading2Size: 1.6em;
 $heading3Size: 1.3em;
 $heading4Size: 1.0em;
 
+video {
+ .live-video {
+    .demo-video {
+        left: 25%;
+        top: 10%;
+        width: 55%;
+    }
+ }
+}
+
 .image-cropper {
     overflow: hidden;
     width: 50px;
